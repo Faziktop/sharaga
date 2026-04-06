@@ -1,0 +1,167 @@
+#include "colors.inc"
+#include "textures.inc"
+
+
+global_settings {
+    
+
+    
+   
+   
+    
+    // Отключаем ambient light глобально
+    ambient_light rgb <0.05, 0.05, 0.05>   
+    // ambient_light rgb <1, 1, 1>
+}
+
+ camera {
+  location <-5, 8,-400>
+  look_at <-5, 0, 20>
+ }
+    
+     /*
+ camera {
+  location <-5, 8,-330>
+  look_at <50, 8, -320>
+ }    */
+
+ // light_source { <-3, 8,4> White} 
+ 
+
+
+// Оси координат
+
+
+
+ box { <0, -10, 0>,           
+      < 0.2, 100, 0.2>             
+      texture {                  
+         pigment { color Black } 
+      }                          
+ } 
+ 
+ box { <0, -10, 0>,           
+      < 100, -9.8, 0.2>             
+      texture {                  
+         pigment { color Black } 
+      }                          
+ }
+ 
+ box { <0, -10, 0>,           
+      < 0.2, -9.8, 100>             
+      texture {                  
+         pigment { color Blue } 
+      }                          
+ }
+     
+ // Mirror
+ 
+ 
+ box { <-5, 0, 29.5>,           
+      < 5, 13, 30>             
+      texture { pigment { color White }
+        finish {           
+                  reflection 1         
+               }
+              }
+  }                          
+      
+      
+// right   
+
+ // light_source { <14, 8,-380> White} 
+ 
+ light_source {
+    <14, 8,-320>  // Позиция
+    
+    // ОЧЕНЬ ЯРКИЙ СВЕТ
+    color rgb <2.5, 2.3, 2.0>
+    
+    // Ключевые параметры для резкого обрезания
+    fade_distance 20         // Расстояние до начала резкого затухания
+    fade_power 20.0            // ОЧЕНЬ высокое значение = резкая граница
+    
+   
+}
+
+ // box
+ 
+ box { 
+    <14, 3-5, -321>,           
+    <15, 13+5, -319>             
+    texture { pigment 
+            { color White filter 0.8}
+                          
+             finish {
+                diffuse 1 
+                          
+             }            
+   }
+     no_shadow
+}
+ 
+// landscape
+ 
+ plane { z, 30 
+   pigment { brick }
+ }
+
+ plane { x, 15
+   pigment { brick }
+ }
+
+ plane { x,-25
+   pigment { brick }
+ }
+
+ plane{ y,-10
+   pigment { checker Black,Gray scale 3 }
+ }
+ 
+ plane{ y, 30
+   pigment { wood }
+ }
+ 
+ 
+ box { <0, 0, 0>, < 10, 1, 16> 
+   pigment { wood }             
+ }
+
+ box { <9, -10, 0>, < 10, 0, 1> 
+   pigment { wood }
+ }
+
+ box { <0, -10, 0>, < 1, 0, 1>
+   pigment { wood }
+ }
+
+ box { <0, -10, 15>, < 1, 0, 16>
+   pigment { wood }
+ }
+
+ box { < 9, -10, 15>, <10, 0, 16>
+   pigment { wood }
+ }  
+ 
+  
+ sphere { <4,2,7>, 1
+   texture { pigment { color White }
+     finish {           
+       reflection 1     
+                    
+     }
+   }
+ } 
+  
+ cylinder { <4, 1, 3>,
+              <4, 3, 3 >, 
+              0.5
+    texture { pigment 
+            { color Green filter 0.8}
+                          
+             finish {
+                diffuse 1 
+                          
+             }            
+   }                      
+ }   
