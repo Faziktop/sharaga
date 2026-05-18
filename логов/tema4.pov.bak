@@ -17,7 +17,7 @@
    
 // вид спереди   
  camera {
-   location <5, 7.5, -75>
+   location <5, 17.5, -35>
    look_at <5, 7.5, 0>
  } 
  
@@ -30,8 +30,16 @@
  }
  */
 
- light_source { <-3, 10, -3> White  }
- light_source { <30, 10, -3> White  }
+light_source { <-30, 10, -30> White
+ fade_power 2      //  вадратичное затухание (как в реальности)
+    fade_distance 30  }  
+ 
+ 
+ light_source { <30, 10, -3> White 
+    fade_power 2      //  вадратичное затухание (как в реальности)
+    fade_distance 30  } 
+ 
+
  
  background{ White}
  
@@ -205,12 +213,92 @@ box {
       }
    }
 }
+    
+    
+    
+     
+     
+     
+     
+    
+
+#declare computer_panel_print=union{
+   box {
+      < 0, 0, 0 >,  // левый нижний угол
+      < 10, 10, 0.00001 >  // правый верхний угол
+      texture {
+         pigment {
+            image_map {
+               "computer_panel.png"
+               once
+            }
+            scale <2.7, 6, 1>
+         }         
+      }
+   }
+}
+object {
+      computer_panel_print
+      translate<14.6, 6.2, 2.0999>
+}
 
 
 
 
 
 
+
+#declare qr_print=union{
+   box {
+      < 0, 0, 0 >,  // левый нижний угол
+      < 10, 10, 0.00001 >  // правый верхний угол
+      texture {
+         pigment {
+            image_map {
+               "qr.png"
+               once
+            }
+            scale <1.2, 1.9, 1>
+         }         
+      }
+   }
+}
+object {
+      qr_print
+      translate<9.78, 9.7, 1.9999>
+}  
+
+
+
+
+
+
+#declare instruction_print=union{
+   box {
+      < 0, 0, 0 >,  // левый нижний угол
+      < 10, 10, 0.00001 >  // правый верхний угол
+      texture {
+         pigment {
+            image_map {
+               "instruction.png"
+               once
+            }
+            scale <2., 3.6, 1>
+         }         
+      }
+   }
+}
+object {
+      instruction_print
+      translate<9.3, 2.7, 1.9999>
+}
+
+ 
+ 
+ 
+ 
+ 
+ 
 
 #declare wood_back=union{
  box { <0, 0, 0>, <9-0.25, 19, -0.1>
@@ -273,7 +361,7 @@ object {
 
 object {
       gray_part_left1    // перегородка полки дл€ надписи "салфетки"
-      translate<0, 8.3, 10.2>
+      translate<0, 8.3, 10.03>
 }
 
 
@@ -293,7 +381,7 @@ object {
 
 object {
       gray_part_left2    // перегородка полки дл€ надписи "палочки"
-      translate<0, 11.3, 10.2>
+      translate<0, 11.3, 10.03>
 }
 
 
@@ -318,14 +406,14 @@ object {
 }
 object {
       salfetki_print     // надпись "салфетки"
-      translate<1, 8.8, 10.2-0.01>
+      translate<1, 8.8, 10.02-0.01>
 }
 
 
 
  
 
-
+                                                                                                                             
 #declare sticks_print=union{   // надпись "палочки"
    box {
        <0, 0, 0>,              
@@ -336,7 +424,7 @@ object {
                "sticks.png"
                once
             }
-            scale <1.9, 0.6, 1>
+            scale <2.15, 0.55, 1>
          }         
       }
    }
@@ -344,8 +432,56 @@ object {
 
 object {
       sticks_print    // надпись "палочки"
-      translate<0.4, 12.2, 10.2-0.01>
+      translate<0.3, 12.2, 10.02-0.01>
 }
+
+
+
+
+
+
+
+
+#declare krishki_print=union{   // надпись "крышки"
+   box {
+      <0, 0, 0>,              
+      < 3, 2, -0.0001>  
+      texture {
+         pigment {
+            image_map {
+               "krishki.png"
+               once
+            }
+            scale <2.9, 1.6, 1>
+         }         
+      }
+   }
+}
+object {
+      krishki_print     // надпись "крышки"
+      translate<5, 9, 13>
+}
+
+#declare sugar_print=union{   // надпись "сахар"
+   box {
+      <0, 0, 0>,              
+      < 3, 2, -0.0001>  
+      texture {
+         pigment {
+            image_map {
+               "sugar.png"
+               once
+            }
+            scale <2., 0.5, 1>
+         }         
+      }
+   }
+}
+object {
+      sugar_print     // надпись "сахар"
+      translate<2.6, 16.5, 9.999-0.25>
+}
+
 
 
 
