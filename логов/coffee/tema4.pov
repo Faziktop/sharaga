@@ -1,0 +1,711 @@
+// ============================================================
+//                      ¡»¡À»Œ“≈ »
+// ============================================================
+#include "colors.inc"
+#include "textures.inc"
+
+
+// ============================================================
+//                       ¿Ã≈–¿ » Œ—¬≈Ÿ≈Õ»≈
+// ============================================================
+// ‚Ë‰ ÒÔÂÂ‰Ë
+   /*
+camera {
+   location <-7, 11.5, -5>
+   look_at <0, 11.5, 0>
+}
+  */
+
+camera {
+   location <0, 7, -30>
+   look_at <5, 7.5, 0>
+} 
+
+
+light_source { <-30, 10, -30> White
+   fade_power 2
+   fade_distance 30
+}  
+
+light_source { <30, 10, -3> White 
+   fade_power 2
+   fade_distance 30
+} 
+
+background { White }
+
+sky_sphere {
+   pigment {
+      image_map {
+         jpeg "sky2.jpg"
+         once
+         map_type 1
+         interpolate 3
+      }
+      scale <0.3, 0.3, 01>
+   }
+   rotate <0, 0, 0>
+}
+
+// ============================================================
+//                      “ ≈   — “ ” – €
+// ============================================================
+
+#declare shkaf_texture = texture {
+   pigment { color rgb <0.33, 0.33, 0.38> }
+   finish {
+      ambient 0.05
+      diffuse 0.7
+      specular 0.6
+      roughness 0.05
+      metallic 0
+      reflection 0.007
+   }
+}      
+
+#declare computer_texture = texture {
+   pigment { color rgb <0.05, 0.05, 0.08> }
+   finish {
+      ambient 0.02
+      diffuse 0.3
+      specular 0.8
+      reflection 0.007
+   }
+}
+
+#declare middle_part_of_computer_texture = texture {
+   pigment { color rgb <0.0, 0.0, 0.0> }
+   finish {
+      ambient 0.02
+      diffuse 0.3
+      specular 0.8
+      reflection 0.07
+   }
+}
+
+#declare silver_rod_texture = texture {
+   pigment { color rgb <0.7, 0.7, 0.72> }
+   finish {
+      ambient 0.1
+      diffuse 0.3
+      metallic
+      specular 0.8
+      roughness 0.05
+      reflection { 0.4, 0.7 metallic }
+   }
+   normal {
+      granite 0.003
+      scale 0.001
+   }
+}
+
+#declare Glass_Bottle_Texture = texture {
+   pigment { color rgbf <0.98, 0.98, 0.98, 0.99> }
+   finish {
+      specular 0.95
+      roughness 0.001
+      reflection { 0.1, 0.5 fresnel on }
+      conserve_energy
+   }
+}
+
+#declare cylinder_texture = texture {
+   pigment { color rgb <1, 1, 1> }
+   finish {
+      ambient 0
+      diffuse 0.5
+      reflection 0.5
+      roughness 0.001
+   }
+}
+
+// ============================================================
+//                  Œ¡⁄ﬂ¬À≈Õ»ﬂ Œ¡⁄≈ “Œ¬
+// ============================================================
+
+// ----- œ≈◊¿“» (Õ¿ À≈… ») -----
+#declare love_coffee_print = union {
+   box { <0, 0, 0>, <19, 5, 0>
+      texture {
+         pigment {
+            image_map { "love_coffee.png" once }
+            scale <18.5, 3.7, 5.0>
+         }
+      }
+   }
+}
+
+#declare gift_print = union {
+   box { <0, 0, 0>, <5, 4, 0>
+      texture {
+         pigment {
+            image_map { "gift.png" once }
+            scale <5, 3.7, 5.0>
+         }
+      }
+   }
+}
+
+#declare for_customers_print = union {
+   box { <0, 0, 0>, <2.6, 1.3, 0.00001>
+      texture {
+         pigment {
+            image_map { "for_customers.png" once }
+            scale <2.6, 1.2, 1>
+         }
+      }
+   }
+}
+
+#declare computer_panel_print = union {
+   box { <0, 0, 0>, <10, 10, 0.00001>
+      texture {
+         pigment {
+            image_map { "computer_panel.png" once }
+            scale <2.7, 6, 1>
+         }
+      }
+   }
+}
+
+#declare qr_print = union {
+   box { <0, 0, 0>, <10, 10, 0.00001>
+      texture {
+         pigment {
+            image_map { "qr.png" once }
+            scale <1.2, 1.9, 1>
+         }
+      }
+   }
+}
+
+#declare instruction_print = union {
+   box { <0, 0, 0>, <10, 10, 0.00001>
+      texture {
+         pigment {
+            image_map { "instruction.png" once }
+            scale <2., 3.6, 1>
+         }
+      }
+   }
+}
+
+#declare salfetki_print = union {
+   box { <0, 0, 0>, <3, 1.2, -0.0001>
+      texture {
+         pigment {
+            image_map { "salfetki.png" once }
+            scale <2.7, 0.6, 1>
+         }
+      }
+   }
+}
+
+#declare sticks_print = union {
+   box { <0, 0, 0>, <2.5, 1.6, 0.001>
+      texture {
+         pigment {
+            image_map { "sticks.png" once }
+            scale <2.15, 0.55, 1>
+         }
+      }
+   }
+}
+
+#declare krishki_print = union {
+   box { <0, 0, 0>, <3, 2, -0.0001>
+      texture {
+         pigment {
+            image_map { "krishki.png" once }
+            scale <2.9, 1.6, 1>
+         }
+      }
+   }
+}
+
+#declare sugar_print = union {
+   box { <0, 0, 0>, <3, 2, -0.0001>
+      texture {
+         pigment {
+            image_map { "sugar.png" once }
+            scale <2., 0.5, 1>
+         }
+      }
+   }
+}
+
+#declare card_terminal_print = union {
+   box { <0, 0, 0>, <3, 2.5, 0.5>
+      texture {
+         pigment {
+            image_map { "card_terminal.png" once }
+            scale <2.2, 3, 1>
+         }
+      }
+   }
+}
+
+
+// ----- œ–Œ◊»≈ ƒ≈“¿À» -----
+/*
+#declare black_rounded_box = object {
+    box { <0, 0, 0>, <1.3, 1.4, 0.5>
+      texture { computer_texture }
+   }
+}
+*/
+
+
+// ----- ƒ≈“¿À»  ŒÃœ‹ﬁ“≈–¿ -----
+#declare bottom_part_of_computer = union {
+   box { <0, 0, 0>, <7.5, 1.1, 11>
+      texture { computer_texture }
+   }
+}
+
+#declare silver_part_of_computer = union {
+   box { <0, 0, 0>, <1.3, 11.4, 11>
+      texture { silver_rod_texture }
+   }
+}
+
+#declare middle_part_of_computer = difference {
+   box { <0, 0, 0>, <6.4, 11.4, 10.9> }
+   box { <2.3, 0, -1>, <5, 3, 2> }
+   texture { middle_part_of_computer_texture }
+}
+
+// ----- ƒ≈“¿À» ÿ ¿‘¿ -----
+#declare wood_back = union {
+   box { <0, 0, 0>, <9-0.25, 19, -0.1>
+      texture {
+         pigment {
+            wood
+            scale <2, 0.2, 2>
+            turbulence 0.2
+            color_map {
+               [0.0 colour rgb <0.55, 0.35, 0.20>]
+               [0.3 colour rgb <0.65, 0.42, 0.25>]
+               [0.6 colour rgb <0.70, 0.45, 0.28>]
+               [1.0 colour rgb <0.50, 0.30, 0.18>]
+            }
+         }
+         finish { diffuse 0.7 specular 0.3 roughness 0.02 }
+      }
+   }
+}
+
+#declare glass_door = union {
+   box { <0, 0, 0>, <6.38, 5.7, 0.25-0.15>
+       //     texture { silver_rod_texture }
+      texture { Glass_Bottle_Texture }
+   }
+}
+
+#declare gray_part_left1 = union {
+   box { <0, 0, 0>, <4.5, 1.2, 0.25>
+      texture { shkaf_texture }
+   }
+}
+
+#declare gray_part_left2 = union {
+   box { <0, 0, 0>, <2.5, 1.6, 0.25>
+      texture { shkaf_texture }
+   }
+}
+
+#declare polka = union {
+   box { <0, 0, 0>, <19, 0.2625, 13>
+      texture { shkaf_texture }
+   }
+}
+
+#declare middle_polka = union {
+   box { <-0.5, -0.5, -0.5>, <20.5, 0, 13.5>
+      texture { shkaf_texture }
+   }
+}
+
+#declare verh = union {
+   box { <0, 0, 0>, <20, 5, 13>
+      texture { shkaf_texture }
+   }
+}
+
+#declare gray_part = union {
+   box { <9, 0, 2>, <12., 21.75, 13>
+      texture { shkaf_texture }
+   }
+}
+
+#declare gray_part2 = union {
+   box { <9, 0, 2>, <20, -9, 13>
+      texture { shkaf_texture }
+   }
+}
+
+#declare boka = union {
+   box { <0, 0, 0>, <1, -12.75, 13>
+      texture { shkaf_texture }
+   }
+}
+
+#declare back_part = union {
+   box { <0, 0, 0>, <20, 37.25-0.5, 0.5>
+      texture { shkaf_texture }
+   }
+}
+
+#declare polka_bottle_top = union {
+   box { <0, 0, 0>, <10, 0.225, 3>
+      texture { shkaf_texture }
+   }
+}
+
+#declare polka_bottle_left = union {
+   box { <0, 0, 0>, <0.3, 16.75, 3>
+      texture { shkaf_texture }
+   }
+}
+
+#declare polka_bottle_middle = union {
+   box { <0, 0, 0>, <0.3, 8.25, 3>
+      texture { shkaf_texture }
+   }
+}
+
+#declare polka_bottle_middle2 = union {
+   box { <0, 0, 0>, <0.3, 5.5, 3>
+      texture { shkaf_texture }
+   }
+}
+
+#declare wood_door = union {
+   box { <0, 0, 0>, <6.15, 12, -0.3>
+      texture {
+         pigment {
+            wood
+            scale <0.2, 2, 0.2>
+            turbulence 0.2
+            color_map {
+               [0.0 colour rgb <0.55, 0.35, 0.20>]
+               [0.3 colour rgb <0.65, 0.42, 0.25>]
+               [0.6 colour rgb <0.70, 0.45, 0.28>]
+               [1.0 colour rgb <0.50, 0.30, 0.18>]
+            }
+         }
+         finish { diffuse 0.7 specular 0.3 roughness 0.02 }
+      }
+   }
+}
+
+#declare silver_rod = union {
+   cylinder { <0, 0, 0>, <9, 0, 0>, 0.12
+      texture { silver_rod_texture }
+   }
+}
+
+// ----- ¡”“€À ¿ » —“¿ ¿Õ -----
+#declare Glass_Interior = interior {
+   ior 1.5
+   fade_distance 2
+   fade_color <0.1, 0.3, 0.1>
+   fade_power 1001
+}
+
+#declare Glass_Thickness = 0.07;
+
+#declare Bottle = difference {
+   sor { 10,
+      <0.0, 0.0>, <0.7, 0>, <0.7, 0.75>, <0.7, 1.5>, <0.7, 2.25>,
+      <0.7, 3>, <0.7, 3.75>, <0.35, 4.5>, <0.35, 6>, <0.2, 6.75>
+   }
+   sor { 10,
+      <0.0, 0+Glass_Thickness>, <0.7-Glass_Thickness, 0+Glass_Thickness>,
+      <0.7-Glass_Thickness, 0.75>, <0.7-Glass_Thickness, 1.5>,
+      <0.7-Glass_Thickness, 2.25>, <0.7-Glass_Thickness, 3>,
+      <0.7-Glass_Thickness, 3.75-Glass_Thickness>,
+      <0.35-Glass_Thickness, 4.5-Glass_Thickness>,
+      <0.35-Glass_Thickness, 6>, <0.3-Glass_Thickness, 6.75>
+   }
+   texture { Glass_Bottle_Texture }
+   interior { Glass_Interior }
+}
+
+#declare dozator = union {   
+   cylinder { <0, 6, 0>, <0, 6.525, 0>, 0.4 texture { cylinder_texture } }
+   cylinder { <0, 6.525, 0>, <0, 6.75, 0>, 0.25 texture { cylinder_texture } }
+   cylinder { <0, 6.75, 0>, <0, 7.725, 0>, 0.07 texture { cylinder_texture } }
+   cylinder { <0, 6, 0>, <0, 4.275, 0>, 0.125 texture { cylinder_texture } }
+   cylinder { <0, 4.275, 0>, <0, 0.225, 0>, 0.06
+      texture {
+         pigment { color rgb <0.5, 0.5, 0.5> }
+         finish { ambient 0 diffuse 0.5 reflection 0.5 roughness 0.001 }
+      }
+   }
+   cone { <0, 7.725, 0>, 0.07, <0, 7.95, 0>, 0.23
+      texture { cylinder_texture }
+   }
+   cylinder { <0, 7.95, 0>, <0, 8.025, 0>, 0.23
+      texture { cylinder_texture }
+   }
+   box { <0-0.05, 7.95, 0>, <0+0.05, 8.025, -1.125>
+      texture { cylinder_texture }
+   }
+}
+
+#declare finished_bottle = union {
+   object { Bottle }
+   object { dozator }
+}
+#declare finished_bottle_with_sirup1 = merge {
+    object { finished_bottle }
+    object { 
+        sor { 6,
+            <0.0, 0+Glass_Thickness+0.01>, 
+            <0.7-Glass_Thickness-0.01, 0+Glass_Thickness+0.01>,
+            <0.7-Glass_Thickness-0.01, 0.75>, 
+            <0.7-Glass_Thickness-0.01, 1.5>,
+            <0.7-Glass_Thickness-0.01, 2.25>, 
+            <0.7-Glass_Thickness-0.01, 3>
+        }
+        pigment { rgb <0.1, 0.1, 0.0> }
+        finish { 
+            diffuse 0.6
+            specular 0.  
+        }
+        interior { ior 1.33 }  
+    }
+}
+
+#declare finished_bottle_with_sirup2 = merge {
+    object { finished_bottle }
+    object { 
+        sor { 8,
+            <0.0, 0+Glass_Thickness+0.01>, 
+            <0.7-Glass_Thickness-0.01, 0+Glass_Thickness+0.01>,
+            <0.7-Glass_Thickness-0.01, 0.75>, 
+            <0.7-Glass_Thickness-0.01, 1.5>,
+            <0.7-Glass_Thickness-0.01, 2.25>, 
+            <0.7-Glass_Thickness-0.01, 3>,
+            <0.7-Glass_Thickness-0.01, 3.75-Glass_Thickness-0.01>,
+            <0.35-Glass_Thickness-0.01, 4.5-Glass_Thickness-0.01>
+        }
+        pigment { rgb <0.0, 0., 0.05> }
+        finish { 
+            diffuse 0.6
+            specular 0.  
+        }
+        interior { ior 1.33 }  
+    }
+}
+
+#declare finished_bottle_with_sirup3 = merge {
+    object { finished_bottle }
+    object { 
+        sor { 5,
+            <0.0, 0+Glass_Thickness+0.01>, 
+            <0.7-Glass_Thickness-0.01, 0+Glass_Thickness+0.01>,
+            <0.7-Glass_Thickness-0.01, 0.75>, 
+            <0.7-Glass_Thickness-0.01, 1.5>,
+            <0.7-Glass_Thickness-0.01, 2.25>
+            
+        }
+        pigment { rgb <0., 0., 0.0> }
+        finish { 
+            diffuse 0.6
+            specular 0.  
+        }
+        interior { ior 1.33 }  
+    }
+}
+
+#declare finished_bottle_with_sirup4 = merge {
+    object { finished_bottle }
+    object { 
+        sor { 7,
+            <0.0, 0+Glass_Thickness+0.01>, 
+            <0.7-Glass_Thickness-0.01, 0+Glass_Thickness+0.01>,
+            <0.7-Glass_Thickness-0.01, 0.75>, 
+            <0.7-Glass_Thickness-0.01, 1.5>,
+            <0.7-Glass_Thickness-0.01, 2.25>, 
+            <0.7-Glass_Thickness-0.01, 3>,
+            <0.7-Glass_Thickness-0.01, 3.75-Glass_Thickness-0.01>
+        }
+        pigment { rgbf <0.1, 0., 0.0, 0.1> }
+        finish { 
+            diffuse 0.6
+            specular 0.  
+        }
+        interior { ior 1.33 }  
+    }
+}
+
+#declare silver_ring = difference {
+   cylinder { <0, 0, 0>, <0, 0, 0.075>, 1.4 }
+   cylinder { <0, 0, -0.075>, <0, 0, 0.375>, 0.825 }
+   texture { silver_rod_texture }
+}
+
+#declare stakan = difference {
+   cone { <0, 0, 0>, 0.7, <0, 0, -1.5>, 0.5 pigment { color Red } }
+   cone { <0, 0, -0.02>, 0.68, <0, 0, -1.52>, 0.48 pigment { color Red } }
+}
+
+#declare stakan_full = union {
+   object { silver_ring }
+   object { stakan }
+   cylinder { <0, 0, -1.4>, <0, 0, -1.41>, 0.49 pigment { color White } }
+}
+
+
+// œÓ˜ËÂ ‰ÂÚ‡ÎË
+
+// «‡ÏÓ˜Ì‡ˇ ÒÍ‚‡ÊËÌ‡
+
+#declare zamok = difference {
+   cone { <0, 0, 0>, 0.25, <0, 0, -0.1>, 0.17
+      texture { silver_rod_texture }
+   }
+   box { <-0.03, 0.1, -0.05>, <0.03, -0.1, -0.11>
+   } 
+}
+#declare zamokkkk = union {       
+    // ¡˚ÎÓ: box { <0, 0.18, 0.25+0.05>, <-0.55, -0.18, 0.28+0.05> }
+    // œÓÒÎÂ Á‡ÏÂÌ˚ x > -y, y > x:
+    box { <0.18, 0, 0.30>, <-0.18, 0.55, 0.33>
+        texture { silver_rod_texture } 
+    }
+    
+    // ¡˚ÎÓ: cone { <-0.55, 0, 0.25+0.05>, 0.18, <-0.55, 0, 0.28+0.05>, 0.16
+    // œÓÒÎÂ Á‡ÏÂÌ˚ x > -y, y > x:
+    cone { <0, 0.55, 0.30>, 0.18, <0, 0.55, 0.33>, 0.16
+        texture { silver_rod_texture } 
+    } 
+}
+
+#declare zamok_lock = difference {
+    object { zamokkkk }
+    object {
+        // ¡˚ÎÓ: box { <-0.61+0.02, 0.05, 0.25+0.04>, <-0.49+0.02, -0.5, 0.28+0.06> }
+        // ¡˚ÎÓ: <-0.59, 0.05, 0.29> Ë <-0.47, -0.5, 0.34>
+        // œÓÒÎÂ Á‡ÏÂÌ˚ x > -y, y > x:
+        box { <0.05, 0.59, 0.29>, <-0.5, 0.47, 0.34> }
+    }
+}
+
+#declare zamok_with_lock = union {
+   object { zamok }
+   cone { <0, 0, 0>, 0.13, <0, 0, 0.4>, 0.13
+         texture { silver_rod_texture } 
+          }
+   object {
+        zamok_lock
+   }
+   
+   
+}
+
+#declare petlya = union {
+    cone { <0, 0, 0>, 0.35, <0, 0, -0.25>, 0.35
+         texture { silver_rod_texture }
+   }
+}
+
+#declare finished_glass_door = union{
+   object { zamok_with_lock translate <5.7, 14.1, 10-0.1> }
+   object { sugar_print translate <2.6, 16.5, 10-0.101> }
+   object { petlya translate <8.5, 14.1-1.5, 10+0.2> }
+   object { petlya translate <8.5, 14.1+1.5, 10+0.2> } 
+   object { glass_door translate <2.5, 11.3, 10-0.1> }
+}     
+      
+// ----- ¬≈—‹ ÿ ¿‘ (—¡Œ– ¿) -----
+#declare shkaf = union { 
+   object { stakan_full translate <10.55, 13.6, 1.985> }
+   object { stakan_full translate <10.55, 16.8, 1.985> }
+   object { silver_rod translate <0.05, 1.2, 10.2> }
+   object { silver_rod translate <0.05, 4.5, 10.6> }
+   object { silver_rod translate <0.05, 4.5, 13> }
+   object { middle_polka }  
+   object { zamok translate <13, 2.8, 2.001> }
+   object { zamok translate <12.7, 15.7, 2.001> }
+
+   object { zamok translate <10, 20.27, 0.001> }
+   object { zamok translate <10.2, 1.3, 2.001> }
+   object { zamok translate <7.5, -2.3, 0.001-0.3> } 
+   object { zamok translate <5.2, -2.3, 0.001-0.3> }
+   object { zamok translate <7.5+6.25, -2.3, 0.001-0.3> }
+   object { polka translate <0, -12.75, 0> }
+   object { polka translate <0, -6.375, 0> }
+   object { verh translate <0, 19., 0> }
+   object { gray_part }
+   object { gray_part2 translate <0, 21.75, 0> }
+   object { boka translate <0, 0, 0> }
+   object { boka translate <20-1-1, 0, 0> }
+   object { back_part translate <0, -12.75, 13> }
+   object { polka_bottle_top translate <0, 8.25, 13-3> }
+   object { polka_bottle_top translate <0, 11.25, 13-3> }
+   object { polka_bottle_top translate <0, 16.75, 13-3> }
+   object { polka_bottle_left translate <0, 0, 13-3> }
+   object { polka_bottle_left translate <4.5-0.15, 0, 13-3> }
+   object { polka_bottle_left translate <9-0.3, 0, 13-3> }
+   object { polka_bottle_middle translate <2.25-0.075, 0, 13-3> }
+   object { polka_bottle_middle translate <6.6-0.075, 0, 13-3> }
+   object { polka_bottle_middle2 translate <6.6-0.075, 11.25, 13-3> }
+   object { polka_bottle_middle2 translate <2.-0.075+0.5, 11.25, 13-3> }
+   object { wood_door translate <0.2, -12.6, 0> }
+   object { wood_door translate <6.425, -12.6, 0> }
+   object { wood_door translate <12.65, -12.6, 0> }
+   object { finished_bottle_with_sirup1 translate <1.3, 0, 11> }
+   object { finished_bottle_with_sirup2 translate <1.3+2.1, 0, 11> }
+   object { finished_bottle_with_sirup3 translate <1.3+4.25, 0, 11> }
+   object { finished_bottle_with_sirup4 translate <1.3+6.4, 0, 11> }
+}
+
+// ============================================================
+//                      –¿«Ã≈Ÿ≈Õ»≈ Œ¡⁄≈ “Œ¬
+// ============================================================
+// ¿Õ»Ã»–Œ¬¿ÕÕ¿ﬂ ƒ¬≈–‹ (ÔÓ‚ÓÓÚ ‚ÓÍÛ„ ÔÂÚÂÎ¸)
+// “Ó˜Í‡ ‚‡˘ÂÌËˇ (ÔÂÚÎË ‰‚ÂË)
+#declare door_pivot = <8.9, 14.1, 9.9>;
+
+//sphere { <8.9, 14.1, 9.9>, 0.1 } 
+
+// ¿Õ»Ã»–Œ¬¿ÕÕ¿ﬂ ƒ¬≈–‹ (ÔÓ‚ÓÓÚ ‚ÓÍÛ„ ÔÂÚÂÎ¸)
+#declare animated_door = object {
+    finished_glass_door
+    translate -door_pivot
+    rotate <0, clock * -90, 0>        // œÓ‚ÓÓÚ Ì‡ 90∞ Á‡ ‚ÂÏˇ ‡ÌËÏ‡ˆËË
+   // rotate <0, -40, 0>
+    translate door_pivot
+}
+object { animated_door }
+object { computer_panel_print translate <14.6, 6.2, 2.0999> }
+object { qr_print translate <9.89, 9.7, 1.999> }  
+object { card_terminal_print translate <9.35, 6, 1.8-0.001> }
+object { instruction_print translate <9.3, 2.7, 1.9999> }
+object { wood_back translate <0.25, 0, 13.1> }
+
+object { gray_part_left1 translate <0, 8.3, 10.03> }
+object { gray_part_left2 translate <0, 11.3, 10.03> }
+object { salfetki_print translate <1, 8.8, 10.02-0.01> }
+object { sticks_print translate <0.3, 12.2, 10.02-0.01> }
+object { krishki_print translate <5, 9, 13> }
+
+object { for_customers_print translate <12, 12.9, 1.99> }
+object { love_coffee_print translate <0.3, 19.5, -0.001> }
+object { gift_print translate <13.5, 14.3, 1.998> }
+object { bottom_part_of_computer translate <12.3, 0.1, 2> }
+object { silver_part_of_computer translate <12.3, 1.25, 2> }
+object { silver_part_of_computer translate <12.3+7.5-1.3, 1.25, 2> }
+object { middle_part_of_computer translate <12.3, 1.25, 2+0.1> } 
+
+//object { black_rounded_box translate <9.77, 6.8, 1.6> }
+object { shkaf }
+
+// ============================================================
+//                          œŒÀ
+// ============================================================
+plane { y, -18 pigment { checker White, Black scale 3 } }  
+
